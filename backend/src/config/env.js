@@ -1,10 +1,10 @@
 require("dotenv").config();
 
 const env = {
-  port: process.env.PORT,
-  mongoUri: process.env.MONGODB_URI,
-  nodeEnv: process.env.NODE_ENV,
-  corsOrigin: process.env.CORS_ORIGIN,
+  port: process.env.PORT || 5000,
+  databaseUrl: process.env.DATABASE_URL,
+  nodeEnv: process.env.NODE_ENV || "development",
+  corsOrigin: process.env.CORS_ORIGIN || "http://localhost:5173",
 };
 
 module.exports = env;
