@@ -57,6 +57,7 @@ model Question {
   prompt             String
   options            String[]
   correctOptionIndex Int
+  hint               String?
   createdAt          DateTime @default(now())
 
   species            Species  @relation(fields: [speciesId], references: [id], onDelete: Cascade)
