@@ -1,27 +1,27 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import DeviceFrame from "../components/DeviceFrame";
+import DeviceFrame, { useDeviceStatus } from "../components/DeviceFrame";
 
-function Login() {
+function LoginForm() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { setStatus } = useDeviceStatus();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError("");
     setSubmitting(true);
     try {
       await login(email, password);
+      setStatus("Acceso concedido", "success");
       navigate("/collection");
     } catch (err) {
-      setError(
-        err.response?.data?.error ||
-          "No se pudo iniciar sesión. Intenta de nuevo.",
+      setStatus(
+        err.response?.data?.error || "No se pudo iniciar sesión.",
+        "error",
       );
     } finally {
       setSubmitting(false);
@@ -29,7 +29,7 @@ function Login() {
   }
 
   return (
-    <DeviceFrame title="BioCartas · Acceso">
+    <>
       <p className="auth-heading">Iniciar sesión</p>
       <form onSubmit={handleSubmit} className="auth-form">
         <label>
@@ -51,7 +51,6 @@ function Login() {
             minLength={6}
           />
         </label>
-        {error && <p className="form-error">{error}</p>}
         <button type="submit" disabled={submitting}>
           {submitting ? "Ingresando..." : "Ingresar"}
         </button>
@@ -59,6 +58,14 @@ function Login() {
       <p className="auth-switch">
         ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
       </p>
+    </>
+  );
+}
+
+function Login() {
+  return (
+    <DeviceFrame title="BioCartas · Acceso">
+      <LoginForm />
     </DeviceFrame>
   );
 }

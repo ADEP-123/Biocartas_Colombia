@@ -1,28 +1,28 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import DeviceFrame from "../components/DeviceFrame";
+import DeviceFrame, { useDeviceStatus } from "../components/DeviceFrame";
 
-function Register() {
+function RegisterForm() {
   const { register } = useAuth();
   const navigate = useNavigate();
+  const { setStatus } = useDeviceStatus();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError("");
     setSubmitting(true);
     try {
       await register(name, email, password);
+      setStatus("Cuenta creada", "success");
       navigate("/collection");
     } catch (err) {
-      setError(
-        err.response?.data?.error ||
-          "No se pudo crear la cuenta. Intenta de nuevo.",
+      setStatus(
+        err.response?.data?.error || "No se pudo crear la cuenta.",
+        "error",
       );
     } finally {
       setSubmitting(false);
@@ -30,7 +30,7 @@ function Register() {
   }
 
   return (
-    <DeviceFrame title="BioCartas · Registro">
+    <>
       <p className="auth-heading">Crear cuenta</p>
       <form onSubmit={handleSubmit} className="auth-form">
         <label>
@@ -61,7 +61,6 @@ function Register() {
             minLength={6}
           />
         </label>
-        {error && <p className="form-error">{error}</p>}
         <button type="submit" disabled={submitting}>
           {submitting ? "Creando cuenta..." : "Registrarme"}
         </button>
@@ -69,6 +68,14 @@ function Register() {
       <p className="auth-switch">
         ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
       </p>
+    </>
+  );
+}
+
+function Register() {
+  return (
+    <DeviceFrame title="BioCartas · Registro">
+      <RegisterForm />
     </DeviceFrame>
   );
 }
