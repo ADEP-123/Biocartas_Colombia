@@ -7,5 +7,82 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Los modelos de dominio (Species, Card, Question, User, Collection...)
-// se agregarán en la Fase 1.
+enum TaxonomicGroup {
+  AVES
+  MAMIFEROS
+  REPTILES
+  ANFIBIOS
+  PECES
+  INSECTOS
+}
+
+enum ConservationStatus {
+  LC // Preocupación menor
+  NT // Casi amenazada
+  VU // Vulnerable
+  EN // En peligro
+  CR // En peligro crítico
+}
+
+model Species {
+  id                 String             @id @default(uuid())
+  commonName         String
+  scientificName     String             @unique
+  group              TaxonomicGroup
+  habitat            String
+  diet               String
+  avgSizeCm          Float?
+  avgWeightKg        Float?
+  conservationStatus ConservationStatus
+  speed              Int
+  camouflage         Int
+  resistance         Int
+  adaptability       Int
+  description        String
+  imageUrl           String?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  questions          Question[]
+  collectedBy        UserCard[]
+
+  @@map("species")
+}
+
+model Question {
+  id                 String   @id @default(uuid())
+  speciesId          String
+  prompt             String
+  options            String[]
+  correctOptionIndex Int
+  createdAt          DateTime @default(now())
+
+  species            Species  @relation(fields: [speciesId], references: [id], onDelete: Cascade)
+
+  @@map("questions")
+}
+
+model User {
+  id           String     @id @default(uuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  createdAt    DateTime   @default(now())
+
+  collection   UserCard[]
+
+  @@map("users")
+}
+
+model UserCard {
+  id         String   @id @default(uuid())
+  userId     String
+  speciesId  String
+  unlockedAt DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  species    Species  @relation(fields: [speciesId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, speciesId])
+  @@map("user_cards")
+}
