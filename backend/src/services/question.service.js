@@ -1,10 +1,16 @@
 const questionRepository = require("../repositories/question.repository");
-
-// La selección aleatoria y validación de respuestas se construye
-// en la Fase 4 (motor de gamificación).
+const shuffleArray = require("../utils/shuffle");
 
 async function getQuestionsBySpecies(speciesId) {
   return questionRepository.findBySpecies(speciesId);
 }
 
-module.exports = { getQuestionsBySpecies };
+async function getPublicQuestionsBySpecies(speciesId) {
+  const questions = await questionRepository.findBySpecies(speciesId);
+  return questions.map(({ correctOptionIndex, options, ...rest }) => ({
+    ...rest,
+    options: shuffleArray(options),
+  }));
+}
+
+module.exports = { getQuestionsBySpecies, getPublicQuestionsBySpecies };

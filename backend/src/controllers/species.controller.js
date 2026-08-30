@@ -19,4 +19,37 @@ async function getSpecies(req, res, next) {
   }
 }
 
-module.exports = { listSpecies, getSpecies };
+async function createSpecies(req, res, next) {
+  try {
+    const species = await speciesService.createSpecies(req.body);
+    res.status(201).json(species);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function updateSpecies(req, res, next) {
+  try {
+    const species = await speciesService.updateSpecies(req.params.id, req.body);
+    res.json(species);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteSpecies(req, res, next) {
+  try {
+    await speciesService.deleteSpecies(req.params.id);
+    res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = {
+  listSpecies,
+  getSpecies,
+  createSpecies,
+  updateSpecies,
+  deleteSpecies,
+};
