@@ -40,6 +40,8 @@ model Species {
   adaptability       Int
   description        String
   imageUrl           String?
+  imageAttribution   String?
+  imageSourceUrl     String?
   createdAt          DateTime           @default(now())
   updatedAt          DateTime           @updatedAt
 
