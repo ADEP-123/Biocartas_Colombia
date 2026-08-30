@@ -1,4 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+
+const DeviceStatusContext = createContext(null);
+
+export function useDeviceStatus() {
+  const ctx = useContext(DeviceStatusContext);
+  if (!ctx) {
+    throw new Error("useDeviceStatus debe usarse dentro de un DeviceFrame");
+  }
+  return ctx;
+}
 
 function getFocusable(container) {
   if (!container) return [];
@@ -24,7 +34,7 @@ function preventFocusSteal(e) {
   e.preventDefault();
 }
 
-function DPad({ onMove }) {
+function DPad({ onMove, onEnter }) {
   return (
     <div className="dpad" role="group" aria-label="Navegación del dispositivo">
       <button
@@ -45,7 +55,13 @@ function DPad({ onMove }) {
       >
         ◀
       </button>
-      <span className="dpad-center" />
+      <button
+        type="button"
+        className="dpad-btn dpad-center"
+        onMouseDown={preventFocusSteal}
+        onClick={onEnter}
+        aria-label="Enter"
+      />
       <button
         type="button"
         className="dpad-btn dpad-right"
@@ -68,15 +84,31 @@ function DPad({ onMove }) {
   );
 }
 
+function MiniScreen({ message, tone }) {
+  return (
+    <div className={`mini-screen mini-screen-${tone}`}>
+      <span className="mini-screen-text">{message}</span>
+    </div>
+  );
+}
+
+const IDLE_STATUS = { message: "Listo", tone: "idle" };
+
 function DeviceFrame({ title, children }) {
   const [booting, setBooting] = useState(true);
+  const [status, setStatusState] = useState(IDLE_STATUS);
   const screenRef = useRef(null);
 
   useEffect(() => {
     setBooting(true);
+    setStatusState(IDLE_STATUS);
     const timer = setTimeout(() => setBooting(false), 650);
     return () => clearTimeout(timer);
   }, [title]);
+
+  function setStatus(message, tone = "idle") {
+    setStatusState({ message: message || IDLE_STATUS.message, tone });
+  }
 
   function moveFocus(direction) {
     const focusable = getFocusable(screenRef.current);
@@ -101,7 +133,6 @@ function DeviceFrame({ title, children }) {
     if (!container) return;
     const active = document.activeElement;
 
-    // Si estas escribiendo en un input, Enter envia el formulario (comportamiento esperado)
     if (active && container.contains(active) && active.tagName === "INPUT") {
       const form = active.closest("form");
       if (form) {
@@ -110,47 +141,40 @@ function DeviceFrame({ title, children }) {
       }
     }
 
-    // Si el foco esta en un boton o link dentro de la pantalla, lo activa
     if (active && container.contains(active) && active !== document.body) {
       active.click();
       return;
     }
 
-    // Sin nada enfocado: envia el primer formulario visible, si existe
     const form = container.querySelector("form");
     if (form) form.requestSubmit();
   }
 
   return (
-    <div className="device">
-      <div className="device-antenna" />
+    <DeviceStatusContext.Provider value={{ setStatus }}>
+      <div className="device">
+        <div className="device-antenna" />
 
-      <div className="device-bezel-top">
-        <div className="device-rivets">
-          <span className="rivet" />
-          <span className="rivet" />
+        <div className="device-bezel-top">
+          <div className="device-rivets">
+            <span className="rivet" />
+            <span className="rivet" />
+          </div>
+          {title && <span className="device-label">{title}</span>}
         </div>
-        {title && <span className="device-label">{title}</span>}
-      </div>
 
-      <div className="device-screen-frame">
-        <div className="device-screen" ref={screenRef}>
-          {booting ? <DeviceLoading /> : children}
+        <div className="device-screen-frame">
+          <div className="device-screen" ref={screenRef}>
+            {booting ? <DeviceLoading /> : children}
+          </div>
+        </div>
+
+        <div className="device-controls">
+          <DPad onMove={moveFocus} onEnter={activate} />
+          <MiniScreen message={status.message} tone={status.tone} />
         </div>
       </div>
-
-      <div className="device-controls">
-        <DPad onMove={moveFocus} />
-        <button
-          type="button"
-          className="device-enter"
-          onMouseDown={preventFocusSteal}
-          onClick={activate}
-        >
-          Enter
-        </button>
-      </div>
-    </div>
+    </DeviceStatusContext.Provider>
   );
 }
 
