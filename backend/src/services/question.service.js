@@ -1,10 +1,14 @@
 const questionRepository = require("../repositories/question.repository");
 
-// La selección aleatoria y validación de respuestas se construye
-// en la Fase 4 (motor de gamificación).
-
 async function getQuestionsBySpecies(speciesId) {
   return questionRepository.findBySpecies(speciesId);
 }
 
-module.exports = { getQuestionsBySpecies };
+// Nunca se envía correctOptionIndex al cliente: se validará en el
+// servidor cuando se construya el motor de gamificación (Fase 4).
+async function getPublicQuestionsBySpecies(speciesId) {
+  const questions = await questionRepository.findBySpecies(speciesId);
+  return questions.map(({ correctOptionIndex, ...rest }) => rest);
+}
+
+module.exports = { getQuestionsBySpecies, getPublicQuestionsBySpecies };
