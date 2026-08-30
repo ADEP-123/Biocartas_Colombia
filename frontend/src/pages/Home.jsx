@@ -12,17 +12,24 @@ function Home() {
   }, []);
 
   return (
-    <div className="status-card">
-      <p>Estado del backend:</p>
-      {status === "checking" && <p>Verificando conexión...</p>}
-      {status === "ok" && (
-        <p className="status-ok">Conectado correctamente ✔</p>
-      )}
-      {status === "error" && (
-        <p className="status-error">
-          No se pudo conectar al backend. ¿Está corriendo en el puerto 5000?
-        </p>
-      )}
+    <div>
+      <h1>Bienvenido a BioCartas Colombia</h1>
+      <p>
+        Colecciona cartas de fauna silvestre colombiana respondiendo trivia
+        sobre cada especie.
+      </p>
+      <div className="status-card">
+        <p>Estado del backend:</p>
+        {status === "checking" && <p>Verificando conexión...</p>}
+        {status === "ok" && (
+          <p className="status-ok">Conectado correctamente ✔</p>
+        )}
+        {status === "error" && (
+          <p className="status-error">
+            No se pudo conectar al backend. ¿Está corriendo en el puerto 5000?
+          </p>
+        )}
+      </div>
     </div>
   );
 }
