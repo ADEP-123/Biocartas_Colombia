@@ -4,6 +4,7 @@ async function findByUser(userId) {
   return prisma.userCard.findMany({
     where: { userId },
     include: { species: true },
+    orderBy: { unlockedAt: "desc" },
   });
 }
 
