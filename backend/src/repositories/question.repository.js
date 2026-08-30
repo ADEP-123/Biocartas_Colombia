@@ -8,4 +8,8 @@ async function create(data) {
   return prisma.question.create({ data });
 }
 
-module.exports = { findBySpecies, create };
+async function findById(id) {
+  return prisma.question.findUnique({ where: { id } });
+}
+
+module.exports = { findBySpecies, create, findById };
