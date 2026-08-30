@@ -235,8 +235,8 @@ h3 {
   margin-top: 8px;
   padding: 14px 18px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: stretch;
+  gap: 14px;
 }
 
 /* ---------- Pantalla de carga ("adquiriendo senal") ---------- */
@@ -292,7 +292,7 @@ h3 {
   }
 }
 
-/* ---------- D-pad y boton Enter ---------- */
+/* ---------- D-pad (el centro ES el boton Enter) ---------- */
 
 .dpad {
   display: grid;
@@ -312,8 +312,6 @@ h3 {
 .dpad-center {
   grid-column: 2;
   grid-row: 2;
-  background-color: var(--color-accent);
-  border-radius: 4px;
 }
 .dpad-right {
   grid-column: 3;
@@ -334,31 +332,50 @@ h3 {
   cursor: pointer;
 }
 
+.dpad-btn.dpad-center {
+  background-color: var(--color-accent);
+}
+
 .dpad-btn:hover {
   background-color: #4d4a40;
+}
+.dpad-btn.dpad-center:hover {
+  background-color: #c4a06a;
 }
 .dpad-btn:active {
   transform: translateY(1px);
 }
 
-.device-enter {
-  background-color: var(--color-primary-light);
-  color: #ffffff;
-  border: none;
-  border-radius: 999px;
-  padding: 0.4rem 1.1rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
+/* ---------- Mini pantalla de estado (errores, aciertos, pistas) ---------- */
+
+.mini-screen {
+  flex: 1;
+  min-height: 74px;
+  background-color: #1d4d3a;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
 }
 
-.device-enter:hover {
-  background-color: var(--color-primary);
+.mini-screen-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+  line-height: 1.3;
 }
-.device-enter:active {
-  transform: translateY(1px);
+
+.mini-screen-idle .mini-screen-text {
+  color: #d7f5df;
+}
+.mini-screen-error .mini-screen-text {
+  color: #ffb4a8;
+}
+.mini-screen-success .mini-screen-text {
+  color: #b7f7c9;
 }
 
 /* ---------- Contenido dentro de la pantalla del dispositivo ---------- */
@@ -409,12 +426,6 @@ h3 {
 .auth-form button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.form-error {
-  color: #a32d2d;
-  font-size: 0.9rem;
-  margin: 0;
 }
 
 .auth-switch {
