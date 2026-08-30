@@ -162,7 +162,7 @@ h3 {
 /* ---------- Device: carcasa estilo GPS de campo, caqui + negro ---------- */
 
 .device {
-  max-width: 380px;
+  width: clamp(300px, 90vw, 380px);
   margin: 2.5rem auto;
   background: linear-gradient(
     180deg,
@@ -225,7 +225,8 @@ h3 {
   background-color: var(--color-screen);
   border-radius: 4px;
   padding: 1.5rem 1.25rem;
-  min-height: 220px;
+  height: clamp(260px, 42vh, 340px);
+  overflow-y: auto;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -247,7 +248,7 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  min-height: 190px;
+  height: 100%;
 }
 
 .radar {
