@@ -65,7 +65,10 @@ function Quiz({ species, question, onAnswered, onCancel }) {
         option,
       );
       if (result.correct) {
-        setStatus("¡Correcto! Carta desbloqueada", "success");
+        setStatus(
+          `¡Felicidades! Desbloqueaste a ${species.commonName}`,
+          "success",
+        );
         onAnswered(result.card);
       } else {
         setStatus(result.hint, "error");
