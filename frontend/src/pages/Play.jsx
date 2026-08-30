@@ -22,7 +22,11 @@ function SpeciesList({ species, unlockedIds, onSelect }) {
                 className="species-row"
                 onClick={() => onSelect(s, unlocked)}
               >
-                <img src={s.imageUrl} alt="" className="species-thumb" />
+                <img
+                  src={s.imageUrl}
+                  alt=""
+                  className={`species-thumb ${unlocked ? "" : "species-thumb-locked"}`}
+                />
                 <span className="species-row-info">
                   <span className="species-row-name">{s.commonName}</span>
                   <span
