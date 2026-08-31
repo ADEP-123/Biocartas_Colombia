@@ -187,10 +187,37 @@ h3 {
 .device-bezel-top {
   background-color: var(--color-chassis-dark);
   border-radius: 14px 14px 4px 4px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.device-rivets {
+  justify-self: start;
+  display: flex;
+  gap: 5px;
+}
+.device-label {
+  justify-self: center;
+}
+
+.device-home-btn {
+  justify-self: end;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: none;
+  background-color: #3d3b34;
+  color: #e8e2c9;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.device-home-btn:hover {
+  background-color: #4d4a40;
 }
 
 .device-rivets {
@@ -638,28 +665,6 @@ h3 {
   padding: 0.6rem;
 }
 
-.card-panel.is-revealing {
-  animation: card-deal 1100ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes card-deal {
-  0% {
-    opacity: 0;
-    transform: scale(0.6) rotate(-10deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.08) rotate(3deg);
-  }
-  75% {
-    transform: scale(0.97) rotate(-1deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .card-panel {
     animation: none;
@@ -668,7 +673,7 @@ h3 {
 
 .card-image {
   width: 100%;
-  height: 118px;
+  height: 110px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 0.5rem;
@@ -887,4 +892,153 @@ h3 {
 .gallery-rarity {
   font-family: var(--font-mono);
   font-size: 0.62rem;
+}
+
+/* ---------- Menu principal: apps del dispositivo ---------- */
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.9rem 0.5rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.app-icon-glyph {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-icon-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ---------- Foco visible: cobertura completa de elementos navegables ---------- */
+
+.app-icon:focus-visible,
+.gallery-item:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  background-color: rgba(176, 141, 87, 0.16);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* ---------- Reverso de la carta ---------- */
+
+.card-back {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.card-back-brand {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.card-back-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back-group {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ---------- Animacion de la carta: reverso -> expansion -> volteo ---------- */
+
+.flip-card-scene {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  transform-style: preserve-3d;
+  transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: flip-card-enter 420ms ease-out;
+}
+
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+@keyframes flip-card-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(0deg);
+}
+.flip-card-front {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front .card-panel {
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card,
+  .flip-card.is-flipped {
+    animation: none;
+    transition: none;
+  }
 }
