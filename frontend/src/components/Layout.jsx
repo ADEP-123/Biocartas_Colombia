@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 function Layout() {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user } = useAuth();
 
   return (
     <>
@@ -13,14 +13,7 @@ function Layout() {
           </Link>
           <nav className="app-nav">
             {isAuthenticated ? (
-              <>
-                <Link to="/collection">Mi colección</Link>
-                <Link to="/play">Jugar</Link>
-                <span className="app-user">Hola, {user.name}</span>
-                <button onClick={logout} className="link-button">
-                  Salir
-                </button>
-              </>
+              <span className="app-user">Hola, {user.name}</span>
             ) : (
               <>
                 <Link to="/login">Iniciar sesión</Link>

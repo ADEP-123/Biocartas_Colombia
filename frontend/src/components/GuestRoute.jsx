@@ -8,7 +8,7 @@ function GuestRoute() {
     return <p className="loading-text">Cargando sesión...</p>;
   }
 
-  return isAuthenticated ? <Navigate to="/collection" replace /> : <Outlet />;
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <Outlet />;
 }
 
 export default GuestRoute;

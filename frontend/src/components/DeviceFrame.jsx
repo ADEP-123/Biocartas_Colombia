@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { Home } from "lucide-react";
 
 const DeviceStatusContext = createContext(null);
 
@@ -94,7 +95,7 @@ function MiniScreen({ message, tone }) {
 
 const IDLE_STATUS = { message: "Listo", tone: "idle" };
 
-function DeviceFrame({ title, children }) {
+function DeviceFrame({ title, onHomeClick, children }) {
   const [booting, setBooting] = useState(true);
   const [status, setStatusState] = useState(IDLE_STATUS);
   const [scrollState, setScrollState] = useState({ up: false, down: false });
@@ -197,6 +198,19 @@ function DeviceFrame({ title, children }) {
             <span className="rivet" />
           </div>
           {title && <span className="device-label">{title}</span>}
+          {onHomeClick ? (
+            <button
+              type="button"
+              className="device-home-btn"
+              onMouseDown={preventFocusSteal}
+              onClick={onHomeClick}
+              aria-label="Volver al menú"
+            >
+              <Home size={12} />
+            </button>
+          ) : (
+            <span />
+          )}
         </div>
 
         <div className="device-screen-frame">

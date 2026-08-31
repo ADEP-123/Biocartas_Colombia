@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DeviceFrame, { useDeviceStatus } from "../components/DeviceFrame";
+import FlipCard from "../components/FlipCard";
 import {
   getSpeciesList,
   getSpeciesQuestions,
@@ -114,49 +116,9 @@ function Quiz({ species, question, onAnswered, onCancel }) {
 
 function CardReveal({ species, card, onBack }) {
   const displayed = card || species;
-  const stats = [
-    ["Velocidad", displayed.speed],
-    ["Camuflaje", displayed.camouflage],
-    ["Resistencia", displayed.resistance],
-    ["Adaptabilidad", displayed.adaptability],
-  ];
-
   return (
     <div className="card-reveal">
-      <div
-        className="card-panel"
-        style={{ borderColor: rarityColor(displayed.rarity) }}
-      >
-        <img
-          src={displayed.imageUrl}
-          alt={displayed.commonName}
-          className="card-image"
-        />
-        <div className="card-name-row">
-          <span className="card-name">{displayed.commonName}</span>
-          <span
-            className="card-rarity"
-            style={{ color: rarityColor(displayed.rarity) }}
-          >
-            {displayed.rarity}
-          </span>
-        </div>
-        <p className="card-scientific">{displayed.scientificName}</p>
-        <div className="card-stats">
-          {stats.map(([label, value]) => (
-            <div key={label} className="card-stat">
-              <span className="card-stat-label">{label}</span>
-              <div className="card-stat-bar">
-                <div
-                  className="card-stat-fill"
-                  style={{ width: `${value}%` }}
-                />
-              </div>
-              <span className="card-stat-value">{value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      <FlipCard card={displayed} />
       <button type="button" className="quiz-cancel" onClick={onBack}>
         Volver a la lista
       </button>
@@ -263,8 +225,12 @@ function PlayScreen() {
 }
 
 function Play() {
+  const navigate = useNavigate();
   return (
-    <DeviceFrame title="BioCartas · Juego">
+    <DeviceFrame
+      title="BioCartas · Juego"
+      onHomeClick={() => navigate("/dashboard")}
+    >
       <PlayScreen />
     </DeviceFrame>
   );
