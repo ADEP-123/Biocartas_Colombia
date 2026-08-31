@@ -1889,6 +1889,254 @@ const speciesSeed = [
       },
     ],
   },
+  {
+    commonName: "Caballito del diablo de los páramos",
+    scientificName: "Mesamphiagrion gaudiimontanum",
+    group: "INSECTOS",
+    habitat:
+      "Turberas y humedales de páramo en la Cordillera Central de los Andes colombianos",
+    diet: "Pequeños insectos voladores",
+    avgSizeCm: 3,
+    avgWeightKg: 0.0002,
+    conservationStatus: "EN",
+    speed: 60,
+    camouflage: 45,
+    resistance: 15,
+    adaptability: 5,
+    description:
+      "Diminuto caballito del diablo que solo habita en las turberas de alta montaña de un sector muy específico de los Andes colombianos; su supervivencia depende enteramente de la salud de esos humedales de páramo.",
+    questions: [
+      {
+        prompt: "¿De qué depende la supervivencia de esta especie?",
+        options: [
+          "De la salud de las turberas de páramo",
+          "De los bosques tropicales bajos",
+          "De los arrecifes de coral",
+          "De los desiertos áridos",
+        ],
+        correctOptionIndex: 0,
+        hint: "Vive exclusivamente en un tipo de humedal de alta montaña.",
+      },
+      {
+        prompt: "¿Dónde se encuentra esta especie?",
+        options: [
+          "Solo en un sector de la Cordillera Central de Colombia",
+          "En todo el continente americano",
+          "En zonas costeras del Caribe",
+          "En selvas amazónicas de tierras bajas",
+        ],
+        correctOptionIndex: 0,
+        hint: "Es un endemismo con una distribución extremadamente reducida.",
+      },
+    ],
+  },
+  {
+    commonName: "Libélula del páramo",
+    scientificName: "Rhionaeschna caligo",
+    group: "INSECTOS",
+    habitat: "Lagunas y turberas de páramo en los Andes colombianos",
+    diet: "Insectos voladores pequeños",
+    avgSizeCm: 6,
+    avgWeightKg: 0.0006,
+    conservationStatus: "EN",
+    speed: 70,
+    camouflage: 40,
+    resistance: 20,
+    adaptability: 5,
+    description:
+      "Gran libélula de páramo, endémica de las alturas andinas de Colombia; comparte hábitat con el caballito del diablo de los páramos y enfrenta las mismas amenazas del cambio climático en los ecosistemas de alta montaña.",
+    questions: [
+      {
+        prompt:
+          "¿Qué ecosistema comparte esta libélula con el caballito del diablo de los páramos?",
+        options: [
+          "Lagunas y turberas de páramo",
+          "Arrecifes de coral",
+          "Selvas tropicales bajas",
+          "Desiertos de arena",
+        ],
+        correctOptionIndex: 0,
+        hint: "Ambas especies dependen del mismo tipo de humedal de alta montaña.",
+      },
+      {
+        prompt: "¿Qué amenaza principal enfrenta esta especie?",
+        options: [
+          "El cambio climático en ecosistemas de alta montaña",
+          "La sobrepesca",
+          "La caza deportiva",
+          "La contaminación marina",
+        ],
+        correctOptionIndex: 0,
+        hint: "Los páramos son ecosistemas particularmente sensibles a este fenómeno global.",
+      },
+    ],
+  },
+  {
+    commonName: "Caballito del diablo cabeciblanco",
+    scientificName: "Mesagrion leucorrhinum",
+    group: "INSECTOS",
+    habitat:
+      "Quebradas y pequeñas cascadas de bosques de montaña en los Andes centrales de Colombia",
+    diet: "Pequeños insectos",
+    avgSizeCm: 3.5,
+    avgWeightKg: 0.0003,
+    conservationStatus: "LC",
+    speed: 55,
+    camouflage: 50,
+    resistance: 25,
+    adaptability: 30,
+    description:
+      "Única especie de toda su familia taxonómica, exclusiva de los Andes centrales de Colombia; vive cerca de pequeñas cascadas y quebradas de bosque de montaña.",
+    questions: [
+      {
+        prompt: "¿Qué hace taxonómicamente única a esta especie?",
+        options: [
+          "Es la única especie de toda su familia",
+          "Pertenece a una familia con miles de especies",
+          "Es un híbrido entre dos especies",
+          "No tiene clasificación científica",
+        ],
+        correctOptionIndex: 0,
+        hint: "Su familia entera está compuesta por un solo miembro: esta especie.",
+      },
+      {
+        prompt: "¿Cerca de qué tipo de hábitat vive esta especie?",
+        options: [
+          "Pequeñas cascadas y quebradas de montaña",
+          "El fondo del océano",
+          "Desiertos secos",
+          "Grandes ríos de tierras bajas",
+        ],
+        correctOptionIndex: 0,
+        hint: "Necesita agua en movimiento y bosque de montaña conservado.",
+      },
+    ],
+  },
+  {
+    commonName: "Mariposa cattleheart esmeralda",
+    scientificName: "Parides sesostris",
+    group: "INSECTOS",
+    habitat:
+      "Bosques húmedos tropicales, desde México hasta Suramérica, incluyendo Colombia",
+    diet: "Néctar de flores en su etapa adulta; plantas del género Aristolochia como larva",
+    avgSizeCm: 9,
+    avgWeightKg: 0.001,
+    conservationStatus: "LC",
+    speed: 45,
+    camouflage: 55,
+    resistance: 20,
+    adaptability: 55,
+    description:
+      "Mariposa de alas negras con llamativos parches verde esmeralda iridiscente; sus orugas se alimentan de una planta tóxica que las protege de los depredadores durante toda su vida.",
+    questions: [
+      {
+        prompt:
+          "¿Por qué las orugas de esta mariposa están protegidas de los depredadores?",
+        options: [
+          "Se alimentan de una planta tóxica que las hace venenosas",
+          "Tienen un caparazón impenetrable",
+          "Son invisibles",
+          "Viven bajo tierra",
+        ],
+        correctOptionIndex: 0,
+        hint: "Su dieta como larva las hace desagradables o peligrosas de comer.",
+      },
+      {
+        prompt: "¿Qué caracteriza visualmente a esta mariposa?",
+        options: [
+          "Parches verde esmeralda iridiscente sobre fondo negro",
+          "Un patrón completamente transparente",
+          "Un solo color café uniforme",
+          "Rayas blancas y negras como una cebra",
+        ],
+        correctOptionIndex: 0,
+        hint: "Su nombre común hace referencia a ese color brillante particular.",
+      },
+    ],
+  },
+  {
+    commonName: "Mariposa cattleheart de Orellana",
+    scientificName: "Parides orellana",
+    group: "INSECTOS",
+    habitat:
+      "Bosques tropicales de Venezuela, Colombia, Ecuador, Perú y Brasil",
+    diet: "Néctar de flores en su etapa adulta; plantas del género Aristolochia como larva",
+    avgSizeCm: 8.5,
+    avgWeightKg: 0.001,
+    conservationStatus: "LC",
+    speed: 45,
+    camouflage: 50,
+    resistance: 20,
+    adaptability: 50,
+    description:
+      "Mariposa de amplia distribución en Suramérica, reconocible por las manchas rojas en la parte inferior de su abdomen, una señal de advertencia hacia sus depredadores.",
+    questions: [
+      {
+        prompt: "¿Qué función cumplen las manchas rojas de esta mariposa?",
+        options: [
+          "Advertir a los depredadores de su toxicidad",
+          "Atraer únicamente a otras mariposas",
+          "Ayudarla a camuflarse en el suelo",
+          "Regular su temperatura corporal",
+        ],
+        correctOptionIndex: 0,
+        hint: "Los colores brillantes en insectos suelen ser una señal de alerta, no decoración.",
+      },
+      {
+        prompt:
+          "¿En cuántos países de Suramérica se puede encontrar esta especie?",
+        options: [
+          "En varios países, incluyendo Colombia",
+          "Únicamente en Colombia",
+          "Solo existe en cautiverio",
+          "Solo en islas oceánicas",
+        ],
+        correctOptionIndex: 0,
+        hint: "Tiene una de las distribuciones más amplias entre las mariposas de su género.",
+      },
+    ],
+  },
+  {
+    commonName: "Mariposa cattleheart de Pizarro",
+    scientificName: "Parides pizarro",
+    group: "INSECTOS",
+    habitat: "Bosques tropicales de Colombia, Brasil, Bolivia y Perú",
+    diet: "Néctar de flores en su etapa adulta; plantas del género Aristolochia como larva",
+    avgSizeCm: 8,
+    avgWeightKg: 0.001,
+    conservationStatus: "LC",
+    speed: 45,
+    camouflage: 50,
+    resistance: 20,
+    adaptability: 45,
+    description:
+      "Mariposa de alas oscuras con un área amarillo pálido compuesta por varias manchas; los machos y las hembras presentan patrones ligeramente distintos en esa zona.",
+    questions: [
+      {
+        prompt:
+          "¿Qué parte del cuerpo de esta mariposa presenta diferencias entre machos y hembras?",
+        options: [
+          "El patrón de manchas amarillo pálido en las alas",
+          "El color de las antenas",
+          "El tamaño de las patas",
+          "El número de alas",
+        ],
+        correctOptionIndex: 0,
+        hint: "Es una zona específica del ala trasera la que varía entre sexos.",
+      },
+      {
+        prompt: "¿De qué se alimentan las orugas de esta especie?",
+        options: [
+          "Plantas del género Aristolochia",
+          "Solo hojas de pasto",
+          "Otros insectos",
+          "Madera en descomposición",
+        ],
+        correctOptionIndex: 0,
+        hint: "Es el mismo género de plantas del que dependen varias mariposas cattleheart.",
+      },
+    ],
+  },
 ];
 
 async function main() {
