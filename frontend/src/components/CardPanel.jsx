@@ -1,6 +1,6 @@
 import { rarityColor } from "../utils/rarity";
 
-function CardPanel({ card, revealing = false }) {
+function CardPanel({ card }) {
   const stats = [
     ["Velocidad", card.speed],
     ["Camuflaje", card.camouflage],
@@ -10,7 +10,7 @@ function CardPanel({ card, revealing = false }) {
 
   return (
     <div
-      className={`card-panel ${revealing ? "is-revealing" : ""}`}
+      className="card-panel"
       style={{ borderColor: rarityColor(card.rarity) }}
     >
       <img src={card.imageUrl} alt={card.commonName} className="card-image" />
