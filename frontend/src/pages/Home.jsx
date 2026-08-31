@@ -23,8 +23,7 @@ function Home() {
       <h1>Fauna silvestre colombiana, una carta a la vez</h1>
       <p>
         BioCartas Colombia es un juego de cartas coleccionables sobre la
-        biodiversidad del país. Cada especie —desde el turpial hasta el paujil
-        piquiazul— se desbloquea respondiendo preguntas sobre su hábitat, su
+        biodiversidad del país. Cada especie se desbloquea respondiendo preguntas sobre su hábitat, su
         dieta y su estado real de conservación según la UICN.
       </p>
       <p>
