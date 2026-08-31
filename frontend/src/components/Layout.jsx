@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import ErrorBoundary from "./ErrorBoundary";
 
 function Layout() {
   const { isAuthenticated, user } = useAuth();
@@ -24,7 +25,9 @@ function Layout() {
         </div>
       </header>
       <main className="app-main">
-        <Outlet />
+        <ErrorBoundary>
+          <Outlet />
+        </ErrorBoundary>
       </main>
     </>
   );
