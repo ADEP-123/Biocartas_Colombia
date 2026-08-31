@@ -1490,6 +1490,405 @@ const speciesSeed = [
       },
     ],
   },
+  /*Peces*/
+  {
+    commonName: "Dorado",
+    scientificName: "Coryphaena hippurus",
+    group: "PECES",
+    habitat: "Aguas oceánicas cálidas del Caribe y el Pacífico colombiano",
+    diet: "Peces pequeños, calamares y crustáceos",
+    avgSizeCm: 100,
+    avgWeightKg: 15,
+    conservationStatus: "LC",
+    speed: 90,
+    camouflage: 20,
+    resistance: 40,
+    adaptability: 60,
+    description:
+      "Uno de los peces más rápidos del océano, reconocido por sus vibrantes colores dorados y azules que se desvanecen rápidamente después de sacarlo del agua.",
+    questions: [
+      {
+        prompt:
+          "¿Qué pasa con los colores del dorado después de sacarlo del agua?",
+        options: [
+          "Se desvanecen rápidamente",
+          "Se vuelven más brillantes",
+          "Nunca cambian",
+          "Se vuelven transparentes",
+        ],
+        correctOptionIndex: 0,
+        hint: "Es un fenómeno bien conocido entre los pescadores.",
+      },
+      {
+        prompt: "¿Qué caracteriza al dorado en el océano?",
+        options: [
+          "Es uno de los peces más rápidos",
+          "Es el pez más lento del mar",
+          "Vive únicamente en el fondo marino",
+          "No puede nadar en aguas abiertas",
+        ],
+        correctOptionIndex: 0,
+        hint: "Es conocido por perseguir a sus presas a gran velocidad.",
+      },
+    ],
+  },
+  {
+    commonName: "Piraña roja",
+    scientificName: "Pygocentrus nattereri",
+    group: "PECES",
+    habitat: "Ríos y ciénagas de las cuencas del Orinoco y el Amazonas",
+    diet: "Peces, insectos y restos de animales",
+    avgSizeCm: 25,
+    avgWeightKg: 1,
+    conservationStatus: "LC",
+    speed: 55,
+    camouflage: 40,
+    resistance: 35,
+    adaptability: 60,
+    description:
+      "A pesar de su fama de depredador feroz, la piraña roja es principalmente carroñera y suele atacar en grupo solo cuando hay escasez de alimento.",
+    questions: [
+      {
+        prompt:
+          "¿Qué tan cierta es la fama de depredador feroz de la piraña roja?",
+        options: [
+          "Está exagerada; suele ser carroñera",
+          "Es completamente exacta siempre",
+          "Nunca ataca en grupo",
+          "Solo come plantas",
+        ],
+        correctOptionIndex: 0,
+        hint: "Su comportamiento real es más oportunista que lo que muestran las películas.",
+      },
+      {
+        prompt: "¿En qué cuencas de Colombia se encuentra principalmente?",
+        options: [
+          "Orinoco y Amazonas",
+          "Magdalena y Cauca",
+          "Solo en el mar Caribe",
+          "Únicamente en lagos andinos",
+        ],
+        correctOptionIndex: 0,
+        hint: "Son las dos grandes cuencas del oriente y sur del país.",
+      },
+    ],
+  },
+  {
+    commonName: "Corroncho",
+    scientificName: "Hypostomus plecostomus",
+    group: "PECES",
+    habitat:
+      "Ríos, quebradas y acuarios de todo el mundo (originario de Suramérica)",
+    diet: "Algas y materia orgánica del fondo",
+    avgSizeCm: 40,
+    avgWeightKg: 1.5,
+    conservationStatus: "LC",
+    speed: 15,
+    camouflage: 70,
+    resistance: 55,
+    adaptability: 85,
+    description:
+      "Pez de cuerpo acorazado y boca succionadora, especializado en raspar algas de rocas y troncos; muy popular en acuarios de todo el mundo.",
+    questions: [
+      {
+        prompt: "¿Para qué está especializada la boca del corroncho?",
+        options: [
+          "Para raspar algas de superficies",
+          "Para cazar peces grandes",
+          "Para triturar caparazones",
+          "Para filtrar plancton",
+        ],
+        correctOptionIndex: 0,
+        hint: "Se alimenta principalmente raspando superficies, no cazando.",
+      },
+      {
+        prompt: "¿Qué protege el cuerpo del corroncho?",
+        options: [
+          "Placas óseas acorazadas",
+          "Un caparazón como el de una tortuga",
+          "Espinas venenosas",
+          "Nada, tiene la piel desnuda",
+        ],
+        correctOptionIndex: 0,
+        hint: "Su piel está cubierta de placas duras, no de escamas comunes.",
+      },
+    ],
+  },
+  {
+    commonName: "Payara",
+    scientificName: "Hydrolycus scomberoides",
+    group: "PECES",
+    habitat: "Ríos de aguas rápidas de las cuencas del Orinoco y el Amazonas",
+    diet: "Otros peces",
+    avgSizeCm: 60,
+    avgWeightKg: 4,
+    conservationStatus: "LC",
+    speed: 75,
+    camouflage: 30,
+    resistance: 45,
+    adaptability: 40,
+    description:
+      "Conocido como 'pez vampiro' por dos largos colmillos que sobresalen de su mandíbula inferior, usados para ensartar a sus presas.",
+    questions: [
+      {
+        prompt: "¿Por qué se le conoce como 'pez vampiro' a la payara?",
+        options: [
+          "Por dos largos colmillos en su mandíbula inferior",
+          "Porque solo caza de noche",
+          "Porque se alimenta de sangre",
+          "Porque vive en cuevas oscuras",
+        ],
+        correctOptionIndex: 0,
+        hint: "Fíjate en una característica muy visible de su boca.",
+      },
+      {
+        prompt: "¿De qué se alimenta principalmente la payara?",
+        options: ["Otros peces", "Solo insectos", "Plantas acuáticas", "Algas"],
+        correctOptionIndex: 0,
+        hint: "Sus colmillos están hechos para atrapar presas, no para masticar plantas.",
+      },
+    ],
+  },
+  {
+    commonName: "Bocachico",
+    scientificName: "Prochilodus magdalenae",
+    group: "PECES",
+    habitat:
+      "Ríos y ciénagas de las cuencas del Magdalena, Cauca, Sinú y Atrato (endémico de Colombia)",
+    diet: "Detritos y materia orgánica del fondo",
+    avgSizeCm: 40,
+    avgWeightKg: 1.2,
+    conservationStatus: "VU",
+    speed: 40,
+    camouflage: 45,
+    resistance: 30,
+    adaptability: 25,
+    description:
+      "Pez de gran importancia cultural y económica para las comunidades del río Magdalena, famoso por su migración masiva llamada 'la subienda'.",
+    questions: [
+      {
+        prompt:
+          "¿Cómo se llama la migración masiva característica del bocachico?",
+        options: ["La subienda", "La bajada", "El desove", "La travesía"],
+        correctOptionIndex: 0,
+        hint: "Es un término tradicional usado por los pescadores del Magdalena.",
+      },
+      {
+        prompt: "¿Por qué ha disminuido tanto la población de bocachico?",
+        options: [
+          "Sobrepesca y alteración de los ríos",
+          "Exceso de depredadores naturales",
+          "Falta de alimento en el río",
+          "Cambios en su color",
+        ],
+        correctOptionIndex: 0,
+        hint: "Las capturas han bajado drásticamente en las últimas décadas por presión humana.",
+      },
+    ],
+  },
+  {
+    commonName: "Sábalo",
+    scientificName: "Megalops atlanticus",
+    group: "PECES",
+    habitat: "Aguas costeras, estuarios y ríos del Caribe colombiano",
+    diet: "Peces pequeños y crustáceos",
+    avgSizeCm: 150,
+    avgWeightKg: 60,
+    conservationStatus: "VU",
+    speed: 70,
+    camouflage: 25,
+    resistance: 50,
+    adaptability: 45,
+    description:
+      "Pez conocido como 'el rey plateado', famoso entre los pescadores deportivos por sus espectaculares saltos fuera del agua cuando es enganchado.",
+    questions: [
+      {
+        prompt:
+          "¿Por qué es tan popular el sábalo entre los pescadores deportivos?",
+        options: [
+          "Por sus espectaculares saltos al ser enganchado",
+          "Porque es fácil de atrapar sin esfuerzo",
+          "Porque vive solo en aguas muy profundas",
+          "Porque no ofrece ninguna resistencia",
+        ],
+        correctOptionIndex: 0,
+        hint: "Es conocido por dar un show acrobático cuando muerde el anzuelo.",
+      },
+      {
+        prompt: "¿En qué tipo de aguas se encuentra el sábalo?",
+        options: [
+          "Aguas costeras, estuarios y ríos",
+          "Solo en el fondo del océano profundo",
+          "Únicamente en lagos de montaña",
+          "Solo en aguas heladas",
+        ],
+        correctOptionIndex: 0,
+        hint: "Se mueve entre el mar y el agua dulce.",
+      },
+    ],
+  },
+  {
+    commonName: "Manta raya gigante",
+    scientificName: "Mobula birostris",
+    group: "PECES",
+    habitat: "Aguas oceánicas abiertas del Pacífico colombiano",
+    diet: "Zooplancton",
+    avgSizeCm: 500,
+    avgWeightKg: 1350,
+    conservationStatus: "EN",
+    speed: 45,
+    camouflage: 15,
+    resistance: 55,
+    adaptability: 10,
+    description:
+      "La raya más grande del mundo, con una envergadura de hasta 7 metros; se alimenta filtrando diminutos organismos del agua, no cazando peces grandes.",
+    questions: [
+      {
+        prompt: "¿De qué se alimenta la manta raya gigante?",
+        options: [
+          "Zooplancton filtrado del agua",
+          "Grandes peces y tiburones pequeños",
+          "Corales",
+          "Algas del fondo marino",
+        ],
+        correctOptionIndex: 0,
+        hint: "A pesar de su enorme tamaño, se alimenta de organismos microscópicos.",
+      },
+      {
+        prompt: "¿Cuál es la principal amenaza para esta especie?",
+        options: [
+          "La pesca dirigida a sus branquias",
+          "La falta de zooplancton en el océano",
+          "La competencia con tiburones",
+          "El cambio en la temperatura del agua exclusivamente",
+        ],
+        correctOptionIndex: 0,
+        hint: "Sus branquias son muy demandadas en algunos mercados internacionales.",
+      },
+    ],
+  },
+  {
+    commonName: "Tiburón ballena",
+    scientificName: "Rhincodon typus",
+    group: "PECES",
+    habitat:
+      "Aguas tropicales oceánicas, visible en el Pacífico colombiano (Gorgona, Malpelo)",
+    diet: "Plancton y pequeños peces",
+    avgSizeCm: 1200,
+    avgWeightKg: 15000,
+    conservationStatus: "EN",
+    speed: 30,
+    camouflage: 20,
+    resistance: 70,
+    adaptability: 15,
+    description:
+      "El pez más grande del mundo; a pesar de su tamaño colosal se alimenta filtrando plancton y no representa ningún peligro para los humanos.",
+    questions: [
+      {
+        prompt: "¿Representa un peligro para los humanos el tiburón ballena?",
+        options: [
+          "No, se alimenta de plancton y es inofensivo",
+          "Sí, es muy agresivo",
+          "Solo ataca de noche",
+          "Solo ataca a otros tiburones",
+        ],
+        correctOptionIndex: 0,
+        hint: "A pesar de ser el pez más grande del mundo, su dieta es de organismos diminutos.",
+      },
+      {
+        prompt: "¿Dónde se puede observar el tiburón ballena en Colombia?",
+        options: [
+          "En el Pacífico colombiano, como Gorgona y Malpelo",
+          "Solo en ríos de agua dulce",
+          "Exclusivamente en acuarios",
+          "En los páramos andinos",
+        ],
+        correctOptionIndex: 0,
+        hint: "Son sitios del océano Pacífico colombiano famosos por el avistamiento de fauna marina grande.",
+      },
+    ],
+  },
+  {
+    commonName: "Tiburón martillo",
+    scientificName: "Sphyrna lewini",
+    group: "PECES",
+    habitat:
+      "Aguas oceánicas tropicales, con agregaciones famosas en el santuario de Malpelo",
+    diet: "Peces, calamares y rayas",
+    avgSizeCm: 350,
+    avgWeightKg: 150,
+    conservationStatus: "CR",
+    speed: 65,
+    camouflage: 25,
+    resistance: 45,
+    adaptability: 10,
+    description:
+      "Reconocible por su cabeza en forma de martillo, que le da una visión casi de 360 grados; forma grandes cardúmenes en algunos santuarios marinos del Pacífico.",
+    questions: [
+      {
+        prompt: "¿Para qué le sirve al tiburón martillo la forma de su cabeza?",
+        options: [
+          "Le da una visión casi de 360 grados",
+          "Le ayuda a nadar más lento",
+          "No tiene ninguna función",
+          "Sirve para excavar en el fondo marino",
+        ],
+        correctOptionIndex: 0,
+        hint: "Sus ojos están ubicados en los extremos de esa forma particular.",
+      },
+      {
+        prompt: "¿Qué comportamiento social es famoso en esta especie?",
+        options: [
+          "Formar grandes cardúmenes en ciertos santuarios",
+          "Vivir siempre completamente solo",
+          "Migrar solo una vez en su vida",
+          "Nunca reunirse con otros de su especie",
+        ],
+        correctOptionIndex: 0,
+        hint: "En lugares como Malpelo se pueden observar agrupaciones numerosas.",
+      },
+    ],
+  },
+  {
+    commonName: "Pez sierra",
+    scientificName: "Pristis pristis",
+    group: "PECES",
+    habitat: "Estuarios, manglares y aguas costeras poco profundas del Caribe",
+    diet: "Peces e invertebrados que detecta con su hocico",
+    avgSizeCm: 500,
+    avgWeightKg: 350,
+    conservationStatus: "CR",
+    speed: 25,
+    camouflage: 40,
+    resistance: 30,
+    adaptability: 5,
+    description:
+      "Reconocible por su hocico alargado en forma de sierra, cubierto de dientes sensibles usados para detectar y aturdir a sus presas; una de las especies marinas más amenazadas del mundo.",
+    questions: [
+      {
+        prompt: "¿Para qué usa el pez sierra su hocico característico?",
+        options: [
+          "Para detectar y aturdir a sus presas",
+          "Para cavar en el fondo del mar",
+          "Para defenderse de aves",
+          "Para nadar más rápido",
+        ],
+        correctOptionIndex: 0,
+        hint: "Está cubierto de estructuras sensibles que detectan movimiento.",
+      },
+      {
+        prompt: "¿Cuál es su estado de conservación?",
+        options: [
+          "En peligro crítico",
+          "Preocupación menor",
+          "Casi amenazado",
+          "Vulnerable",
+        ],
+        correctOptionIndex: 0,
+        hint: "Es una de las especies marinas más amenazadas a nivel mundial.",
+      },
+    ],
+  },
 ];
 
 async function main() {
