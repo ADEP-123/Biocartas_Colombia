@@ -950,38 +950,42 @@ h3 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   border-radius: 12px;
   border: 3px solid rgba(255, 255, 255, 0.35);
   color: #ffffff;
-  padding: 1rem;
+  padding: 0.9rem;
   box-sizing: border-box;
 }
 
-.card-back-brand {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-
-.card-back-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.15);
+.card-back-top {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.4rem;
 }
 
 .card-back-group {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.card-back-fact {
+  flex: 1;
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.card-back-brand {
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
 }
 
 /* ---------- Animacion de la carta: reverso -> expansion -> volteo ---------- */
@@ -993,8 +997,14 @@ h3 {
 
 .flip-card {
   position: relative;
+  display: block;
   width: 100%;
   min-height: 260px;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
   transform-style: preserve-3d;
   transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
   animation: flip-card-enter 420ms ease-out;
@@ -1018,6 +1028,7 @@ h3 {
 .flip-card-face {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -1041,4 +1052,58 @@ h3 {
     animation: none;
     transition: none;
   }
+}
+
+.flip-card-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--color-text);
+  opacity: 0.6;
+  margin: 0.4rem 0 0;
+}
+
+/* ---------- Cajas de scroll independientes (logros / galeria) ---------- */
+
+.scroll-box {
+  position: relative;
+}
+
+.scroll-box-inner {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-box-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-cue-inner.scroll-cue-up {
+  top: 2px;
+}
+.scroll-cue-inner.scroll-cue-down {
+  bottom: 2px;
+}
+
+/* ---------- Busqueda dentro de la coleccion ---------- */
+
+.collection-search {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  margin-bottom: 0.6rem;
+  box-sizing: border-box;
+}
+
+/* ---------- Logros navegables por D-pad ---------- */
+
+.achievement-row:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  background-color: rgba(176, 141, 87, 0.16);
+  box-shadow: 0 0 0 2px var(--color-accent);
 }
