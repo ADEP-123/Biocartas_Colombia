@@ -9,6 +9,7 @@ import {
   getMyAchievements,
 } from "../api/collection.api";
 import { rarityColor } from "../utils/rarity";
+import SpeciesImage from "../components/SpeciesImage";
 
 const GROUP_LABELS = {
   AVES: "Aves",
@@ -111,11 +112,7 @@ function Gallery({ collection, progress, achievements, onSelect }) {
                     className="gallery-item"
                     onClick={() => onSelect(species)}
                   >
-                    <img
-                      src={species.imageUrl}
-                      alt=""
-                      className="gallery-thumb"
-                    />
+                    <SpeciesImage species={species} className="gallery-thumb" />
                     <span className="gallery-name">{species.commonName}</span>
                     <span
                       className="gallery-rarity"

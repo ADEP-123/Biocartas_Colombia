@@ -10,6 +10,7 @@ import {
 import { getMyCollection, getMyProgress } from "../api/collection.api";
 import { rarityColor } from "../utils/rarity";
 import { getGroupMeta } from "../utils/groups";
+import SpeciesImage from "../components/SpeciesImage";
 
 const GROUP_LABELS = {
   AVES: "Aves",
@@ -63,9 +64,8 @@ function SpeciesList({ group, species, unlockedIds, onSelect, onBack }) {
                 className="species-row"
                 onClick={() => onSelect(s, unlocked)}
               >
-                <img
-                  src={s.imageUrl}
-                  alt=""
+                <SpeciesImage
+                  species={s}
                   className={`species-thumb ${unlocked ? "" : "species-thumb-locked"}`}
                 />
                 <span className="species-row-info">

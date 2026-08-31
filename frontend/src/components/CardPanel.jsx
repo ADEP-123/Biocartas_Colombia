@@ -1,4 +1,5 @@
 import { rarityColor } from "../utils/rarity";
+import SpeciesImage from "../components/SpeciesImage";
 
 function CardPanel({ card }) {
   const stats = [
@@ -13,7 +14,7 @@ function CardPanel({ card }) {
       className="card-panel"
       style={{ borderColor: rarityColor(card.rarity) }}
     >
-      <img src={card.imageUrl} alt={card.commonName} className="card-image" />
+      <SpeciesImage species={card} className="card-image" />
       <div className="card-name-row">
         <span className="card-name">{card.commonName}</span>
         <span
