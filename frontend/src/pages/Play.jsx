@@ -7,13 +7,52 @@ import {
   getSpeciesQuestions,
   answerSpeciesQuestion,
 } from "../api/species.api";
-import { getMyCollection } from "../api/collection.api";
+import { getMyCollection, getMyProgress } from "../api/collection.api";
 import { rarityColor } from "../utils/rarity";
+import { getGroupMeta } from "../utils/groups";
 
-function SpeciesList({ species, unlockedIds, onSelect }) {
+const GROUP_LABELS = {
+  AVES: "Aves",
+  MAMIFEROS: "Mamíferos",
+  REPTILES: "Reptiles",
+  ANFIBIOS: "Anfibios",
+  PECES: "Peces",
+  INSECTOS: "Insectos",
+};
+
+function ModuleGrid({ groups, onSelect }) {
   return (
     <>
-      <p className="auth-heading">Especies · Módulo Aves</p>
+      <p className="auth-heading">Elige un módulo</p>
+      <div className="app-grid">
+        {groups.map(group => {
+          const { color, icon: Icon } = getGroupMeta(group);
+          return (
+            <button
+              key={group}
+              type="button"
+              className="app-icon"
+              onClick={() => onSelect(group)}
+            >
+              <span
+                className="app-icon-glyph"
+                style={{ backgroundColor: color }}
+              >
+                <Icon size={22} strokeWidth={1.75} />
+              </span>
+              <span className="app-icon-label">{GROUP_LABELS[group]}</span>
+            </button>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+function SpeciesList({ group, species, unlockedIds, onSelect, onBack }) {
+  return (
+    <>
+      <p className="auth-heading">Especies · Módulo {GROUP_LABELS[group]}</p>
       <ul className="species-list">
         {species.map(s => {
           const unlocked = unlockedIds.has(s.id);
@@ -48,6 +87,9 @@ function SpeciesList({ species, unlockedIds, onSelect }) {
           );
         })}
       </ul>
+      <button type="button" className="quiz-cancel" onClick={onBack}>
+        Elegir otro módulo
+      </button>
     </>
   );
 }
@@ -129,17 +171,40 @@ function CardReveal({ species, card, onBack }) {
 function PlayScreen() {
   const { setStatus } = useDeviceStatus();
   const [view, setView] = useState("loading");
+  const [availableGroups, setAvailableGroups] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState(null);
   const [speciesList, setSpeciesList] = useState([]);
   const [unlockedIds, setUnlockedIds] = useState(new Set());
   const [selectedSpecies, setSelectedSpecies] = useState(null);
   const [question, setQuestion] = useState(null);
   const [unlockedCard, setUnlockedCard] = useState(null);
 
-  async function loadData() {
-    setView("loading");
+  useEffect(() => {
+    async function loadModules() {
+      setView("loading");
+      try {
+        const progress = await getMyProgress();
+        const groups = progress.byGroup
+          .filter(g => g.total > 0)
+          .map(g => g.group);
+        setAvailableGroups(groups);
+        setStatus("Listo", "idle");
+        setView("modules");
+      } catch (err) {
+        setStatus("No se pudieron cargar los módulos.", "error");
+        setView("modules");
+      }
+    }
+    loadModules();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function openModule(group) {
+    setSelectedGroup(group);
+    setStatus("Cargando especies...", "idle");
     try {
       const [species, collection] = await Promise.all([
-        getSpeciesList("AVES"),
+        getSpeciesList(group),
         getMyCollection(),
       ]);
       setSpeciesList(species);
@@ -148,14 +213,8 @@ function PlayScreen() {
       setView("list");
     } catch (err) {
       setStatus("No se pudo cargar el módulo.", "error");
-      setView("list");
     }
   }
-
-  useEffect(() => {
-    loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   async function handleSelect(species, unlocked) {
     if (unlocked) {
@@ -187,11 +246,21 @@ function PlayScreen() {
     setSelectedSpecies(null);
     setQuestion(null);
     setUnlockedCard(null);
-    loadData();
+    openModule(selectedGroup);
+  }
+
+  function backToModules() {
+    setSelectedGroup(null);
+    setSpeciesList([]);
+    setView("modules");
   }
 
   if (view === "loading") {
-    return <p className="quiz-prompt">Cargando módulo Aves...</p>;
+    return <p className="quiz-prompt">Cargando...</p>;
+  }
+
+  if (view === "modules") {
+    return <ModuleGrid groups={availableGroups} onSelect={openModule} />;
   }
 
   if (view === "quiz") {
@@ -217,9 +286,11 @@ function PlayScreen() {
 
   return (
     <SpeciesList
+      group={selectedGroup}
       species={speciesList}
       unlockedIds={unlockedIds}
       onSelect={handleSelect}
+      onBack={backToModules}
     />
   );
 }
