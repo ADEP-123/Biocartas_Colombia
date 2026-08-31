@@ -200,6 +200,7 @@ function PlayScreen() {
   }, []);
 
   async function openModule(group) {
+    setView("loading");
     setSelectedGroup(group);
     setStatus("Cargando especies...", "idle");
     try {
@@ -213,6 +214,7 @@ function PlayScreen() {
       setView("list");
     } catch (err) {
       setStatus("No se pudo cargar el módulo.", "error");
+      setView("modules");
     }
   }
 
