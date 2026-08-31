@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DeviceFrame, { useDeviceStatus } from "../components/DeviceFrame";
-import CardPanel from "../components/CardPanel";
+import FlipCard from "../components/FlipCard";
 import {
   getMyCollection,
   getMyProgress,
@@ -136,7 +137,7 @@ function CollectionScreen() {
   if (view === "detail") {
     return (
       <div className="card-reveal">
-        <CardPanel card={selectedSpecies} />
+        <FlipCard card={selectedSpecies} />
         <button
           type="button"
           className="quiz-cancel"
@@ -162,8 +163,12 @@ function CollectionScreen() {
 }
 
 function Collection() {
+  const navigate = useNavigate();
   return (
-    <DeviceFrame title="BioCartas · Colección">
+    <DeviceFrame
+      title="BioCartas · Colección"
+      onHomeClick={() => navigate("/dashboard")}
+    >
       <CollectionScreen />
     </DeviceFrame>
   );

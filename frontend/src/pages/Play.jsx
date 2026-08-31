@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DeviceFrame, { useDeviceStatus } from "../components/DeviceFrame";
+import FlipCard from "../components/FlipCard";
 import {
   getSpeciesList,
   getSpeciesQuestions,
@@ -7,7 +9,6 @@ import {
 } from "../api/species.api";
 import { getMyCollection } from "../api/collection.api";
 import { rarityColor } from "../utils/rarity";
-import CardPanel from "../components/CardPanel";
 
 function SpeciesList({ species, unlockedIds, onSelect }) {
   return (
@@ -117,7 +118,7 @@ function CardReveal({ species, card, onBack }) {
   const displayed = card || species;
   return (
     <div className="card-reveal">
-      <CardPanel card={displayed} revealing />
+      <FlipCard card={displayed} />
       <button type="button" className="quiz-cancel" onClick={onBack}>
         Volver a la lista
       </button>
@@ -224,8 +225,12 @@ function PlayScreen() {
 }
 
 function Play() {
+  const navigate = useNavigate();
   return (
-    <DeviceFrame title="BioCartas · Juego">
+    <DeviceFrame
+      title="BioCartas · Juego"
+      onHomeClick={() => navigate("/dashboard")}
+    >
       <PlayScreen />
     </DeviceFrame>
   );
