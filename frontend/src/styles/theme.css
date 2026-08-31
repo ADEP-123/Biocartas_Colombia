@@ -1107,3 +1107,10 @@ h3 {
   background-color: rgba(176, 141, 87, 0.16);
   box-shadow: 0 0 0 2px var(--color-accent);
 }
+
+.image-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
