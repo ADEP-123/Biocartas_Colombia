@@ -15,14 +15,17 @@ function ScrollBox({ children, maxHeight = 160 }) {
 
   useEffect(() => {
     updateScrollState();
-  });
-
-  useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+
+    const resizeObserver = new ResizeObserver(updateScrollState);
+    Array.from(el.children).forEach(child => resizeObserver.observe(child));
+
     el.addEventListener("scroll", updateScrollState);
     window.addEventListener("resize", updateScrollState);
+
     return () => {
+      resizeObserver.disconnect();
       el.removeEventListener("scroll", updateScrollState);
       window.removeEventListener("resize", updateScrollState);
     };
