@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeviceFrame, { useDeviceStatus } from "../components/DeviceFrame";
 import FlipCard from "../components/FlipCard";
+import ScrollBox from "../components/ScrollBox";
 import {
   getMyCollection,
   getMyProgress,
   getMyAchievements,
 } from "../api/collection.api";
 import { rarityColor } from "../utils/rarity";
+import SpeciesImage from "../components/SpeciesImage";
 
 const GROUP_LABELS = {
   AVES: "Aves",
@@ -34,7 +36,10 @@ function ProgressBar({ label, unlocked, total, percentage }) {
 
 function AchievementRow({ title, description, unlocked }) {
   return (
-    <li className={`achievement-row ${unlocked ? "unlocked" : "locked"}`}>
+    <li
+      className={`achievement-row ${unlocked ? "unlocked" : "locked"}`}
+      tabIndex={0}
+    >
       <span className="achievement-title">{title}</span>
       <span className="achievement-desc">{description}</span>
       <span
@@ -47,7 +52,14 @@ function AchievementRow({ title, description, unlocked }) {
 }
 
 function Gallery({ collection, progress, achievements, onSelect }) {
+  const [search, setSearch] = useState("");
   const activeGroups = progress.byGroup.filter(g => g.total > 0);
+
+  const filteredCollection = collection.filter(entry =>
+    entry.species.commonName
+      .toLowerCase()
+      .includes(search.trim().toLowerCase()),
+  );
 
   return (
     <>
@@ -64,11 +76,13 @@ function Gallery({ collection, progress, achievements, onSelect }) {
       </div>
 
       <p className="collection-subheading">Logros</p>
-      <ul className="achievement-list">
-        {achievements.map(a => (
-          <AchievementRow key={a.id} {...a} />
-        ))}
-      </ul>
+      <ScrollBox maxHeight={150}>
+        <ul className="achievement-list">
+          {achievements.map(a => (
+            <AchievementRow key={a.id} {...a} />
+          ))}
+        </ul>
+      </ScrollBox>
 
       <p className="collection-subheading">Cartas obtenidas</p>
       {collection.length === 0 ? (
@@ -76,25 +90,42 @@ function Gallery({ collection, progress, achievements, onSelect }) {
           Aún no tienes cartas. Ve a Jugar para conseguir la primera.
         </p>
       ) : (
-        <div className="gallery-grid">
-          {collection.map(({ species }) => (
-            <button
-              key={species.id}
-              type="button"
-              className="gallery-item"
-              onClick={() => onSelect(species)}
-            >
-              <img src={species.imageUrl} alt="" className="gallery-thumb" />
-              <span className="gallery-name">{species.commonName}</span>
-              <span
-                className="gallery-rarity"
-                style={{ color: rarityColor(species.rarity) }}
-              >
-                {species.rarity}
-              </span>
-            </button>
-          ))}
-        </div>
+        <>
+          <input
+            type="search"
+            className="collection-search"
+            placeholder="Buscar en mi colección..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+          {filteredCollection.length === 0 ? (
+            <p className="empty-state">
+              Ninguna carta coincide con "{search}".
+            </p>
+          ) : (
+            <ScrollBox maxHeight={220}>
+              <div className="gallery-grid">
+                {filteredCollection.map(({ species }) => (
+                  <button
+                    key={species.id}
+                    type="button"
+                    className="gallery-item"
+                    onClick={() => onSelect(species)}
+                  >
+                    <SpeciesImage species={species} className="gallery-thumb" />
+                    <span className="gallery-name">{species.commonName}</span>
+                    <span
+                      className="gallery-rarity"
+                      style={{ color: rarityColor(species.rarity) }}
+                    >
+                      {species.rarity}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </ScrollBox>
+          )}
+        </>
       )}
     </>
   );
