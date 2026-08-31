@@ -18,7 +18,7 @@ function RegisterForm() {
     try {
       await register(name, email, password);
       setStatus("Cuenta creada", "success");
-      navigate("/collection");
+      navigate("/dashboard");
     } catch (err) {
       setStatus(
         err.response?.data?.error || "No se pudo crear la cuenta.",

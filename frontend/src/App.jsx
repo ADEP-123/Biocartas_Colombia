@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Collection from "./pages/Collection";
 import Play from "./pages/Play";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </Route>
 
         <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/play" element={<Play />} />
         </Route>
