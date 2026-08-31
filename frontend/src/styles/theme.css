@@ -1114,3 +1114,29 @@ h3 {
   justify-content: center;
   color: #ffffff;
 }
+
+.error-boundary {
+  max-width: 480px;
+  margin: 3rem auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.error-boundary h2 {
+  color: #a32d2d;
+}
+
+.error-boundary button {
+  margin-top: 1rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+}
