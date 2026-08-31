@@ -37,6 +37,7 @@ services:
       - ./backend/.env
     environment:
       DATABASE_URL: postgresql://biocartas:biocartas_dev@postgres:5432/biocartas?schema=public
+      DIRECT_URL: postgresql://biocartas:biocartas_dev@postgres:5432/biocartas?schema=public
     ports:
       - "5000:5000"
     volumes:
