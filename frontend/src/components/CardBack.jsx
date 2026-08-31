@@ -1,14 +1,15 @@
 import { getGroupMeta } from "../utils/groups";
 
-function CardBack({ group }) {
+function CardBack({ group, funFact }) {
   const { label, color, icon: Icon } = getGroupMeta(group);
   return (
     <div className="card-back" style={{ backgroundColor: color }}>
-      <span className="card-back-brand">BioCartas</span>
-      <div className="card-back-icon">
-        <Icon size={40} strokeWidth={1.5} />
+      <div className="card-back-top">
+        <Icon size={18} strokeWidth={1.75} />
+        <span className="card-back-group">{label}</span>
       </div>
-      <span className="card-back-group">{label}</span>
+      <p className="card-back-fact">{funFact}</p>
+      <span className="card-back-brand">BioCartas</span>
     </div>
   );
 }
