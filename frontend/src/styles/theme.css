@@ -1056,20 +1056,20 @@ h3 {
 
 /* ---------- Foco visible para navegacion con D-pad/teclado ---------- */
 
-.device-screen button:focus-visible,
-.device-screen a:focus-visible {
+.device-screen button:focus,
+.device-screen a:focus {
   outline: none;
   box-shadow: 0 0 0 3px var(--color-accent);
 }
 
-.device-screen input:focus-visible {
+.device-screen input:focus {
   outline: none;
   border-color: var(--color-primary-light);
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.25);
 }
 
-.species-row:focus-visible,
-.quiz-option:focus-visible {
+.species-row:focus,
+.quiz-option:focus {
   outline: none;
   border-color: var(--color-accent);
   background-color: rgba(176, 141, 87, 0.16);
@@ -1255,8 +1255,8 @@ h3 {
 
 /* ---------- Foco visible: cobertura completa de elementos navegables ---------- */
 
-.app-icon:focus-visible,
-.gallery-item:focus-visible {
+.app-icon:focus,
+.gallery-item:focus {
   outline: none;
   border-color: var(--color-accent);
   background-color: rgba(176, 141, 87, 0.16);
@@ -1421,7 +1421,7 @@ h3 {
 
 /* ---------- Logros navegables por D-pad ---------- */
 
-.achievement-row:focus-visible {
+.achievement-row:focus {
   outline: none;
   border-color: var(--color-accent);
   background-color: rgba(176, 141, 87, 0.16);
