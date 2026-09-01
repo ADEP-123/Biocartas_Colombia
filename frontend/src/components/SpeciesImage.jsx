@@ -2,7 +2,9 @@ import { getGroupMeta } from "../utils/groups";
 
 function SpeciesImage({ species, className }) {
   if (species.imageUrl) {
-    return <img src={species.imageUrl} alt="" className={className} />;
+    return (
+      <img src={species.imageUrl} alt="" className={className} loading="lazy" />
+    );
   }
 
   const { color, icon: Icon } = getGroupMeta(species.group);

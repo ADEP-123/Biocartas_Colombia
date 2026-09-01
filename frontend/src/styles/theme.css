@@ -106,28 +106,348 @@ h3 {
 /* ---------- Home: pagina informativa plana, SIN chasis de dispositivo ---------- */
 
 .home-hero {
-  padding: 3.5rem 0 2.5rem;
-  max-width: 640px;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 3rem 0 2.5rem;
+  flex-wrap: wrap;
 }
 
-.home-hero h1 {
-  font-size: 2.2rem;
+.home-hero-text {
+  flex: 1 1 380px;
+  max-width: 560px;
+}
+
+.home-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+}
+
+.home-hero-text h1 {
+  font-size: 2.1rem;
   line-height: 1.15;
   color: var(--color-primary);
+  margin-bottom: 0.75rem;
 }
 
-.home-hero p {
-  font-size: 1.05rem;
+.home-hero-text p {
+  font-size: 1rem;
   line-height: 1.6;
 }
 
+.home-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
 .home-cta {
-  display: inline-block;
-  margin-top: 0.5rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+}
+
+.home-cta-secondary {
   color: var(--color-primary);
   font-weight: 600;
   text-decoration: none;
   border-bottom: 2px solid var(--color-accent);
+}
+
+.home-hero-visual {
+  flex: 0 0 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.home-section {
+  padding: 2.25rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.home-section h2 {
+  color: var(--color-primary);
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-section-intro {
+  max-width: 640px;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.home-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.home-step {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem 1.1rem 1.1rem;
+  color: var(--color-primary);
+}
+
+.home-step-number {
+  position: absolute;
+  top: -12px;
+  left: 14px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-step h3 {
+  font-size: 0.95rem;
+  margin: 0.6rem 0 0.35rem;
+}
+
+.home-step p {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.rarity-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.rarity-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  background-color: var(--color-surface);
+}
+
+.rarity-chip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.rarity-chip-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.rarity-chip-status {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text);
+  opacity: 0.75;
+}
+
+.home-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.home-module-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1.5px solid;
+  border-radius: 10px;
+  padding: 1.1rem 0.75rem;
+  background-color: var(--color-surface);
+}
+
+.home-module-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-module-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.home-module-count {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.home-about p {
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.home-developer {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.25rem 0;
+}
+
+.home-developer-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.home-developer-name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.home-developer-role {
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.75;
+}
+
+.home-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.home-stack-badge {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-primary);
+}
+
+/* ---------- Mockup decorativo del dispositivo (solo en Home) ---------- */
+
+.mock-device {
+  width: 190px;
+  background: linear-gradient(
+    180deg,
+    var(--color-chassis) 0%,
+    var(--color-chassis-trim) 100%
+  );
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 14px 30px rgba(35, 35, 32, 0.28);
+}
+
+.mock-device-antenna {
+  width: 16px;
+  height: 18px;
+  background-color: var(--color-chassis-dark);
+  border-radius: 8px 8px 4px 4px;
+  margin: 0 auto 5px;
+}
+
+.mock-device-bezel {
+  background-color: var(--color-chassis-dark);
+  border-radius: 10px 10px 3px 3px;
+  display: flex;
+  gap: 4px;
+  padding: 6px 8px;
+}
+
+.mock-device-rivet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #55524a;
+}
+
+.mock-device-screen {
+  background-color: var(--color-chassis-dark);
+  border: 2px solid var(--color-accent);
+  padding: 6px;
+  margin: 4px 4px 0;
+  border-radius: 5px;
+}
+
+.mock-card {
+  background-color: #ffffff;
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.mock-card-image {
+  height: 40px;
+  border-radius: 5px;
+  background-color: var(--color-border);
+  margin-bottom: 0.4rem;
+}
+
+.mock-card-name {
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.mock-card-rarity {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+
+.mock-device-controls {
+  background-color: var(--color-chassis-dark);
+  border-radius: 3px 3px 14px 14px;
+  margin-top: 6px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mock-dpad {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: #3d3b34;
+}
+
+.mock-mini-screen {
+  flex: 1;
+  height: 20px;
+  margin-left: 8px;
+  background-color: #1d4d3a;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 3px;
 }
 
 .home-status {
