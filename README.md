@@ -1,5 +1,8 @@
 # BioCartas Colombia
 
+🔗 **Demo en vivo:** [https://biocartas-colombia.vercel.app](https://biocartas-colombia.vercel.app)
+(el backend está en el plan gratuito de Render — la primera carga puede tardar unos segundos mientras el servidor "despierta")
+
 Aplicación web de cartas coleccionables gamificadas sobre la fauna silvestre de Colombia. Los usuarios desbloquean cartas de especies reales respondiendo preguntas sobre su biología, y la rareza de cada carta está directamente ligada a su estado de conservación real según la UICN (Común = Preocupación Menor, hasta Legendario = En Peligro Crítico).
 
 Construida como propuesta de desarrollo dirigida al Instituto Humboldt, con stack **PERN** (PostgreSQL, Express, React, Node) y arquitectura por capas.
@@ -20,14 +23,13 @@ Construida como propuesta de desarrollo dirigida al Instituto Humboldt, con stac
 
 Registro e inicio de sesión con JWT. La sesión se guarda en `localStorage` y se restaura automáticamente al recargar la página, sin pedir login de nuevo mientras el token siga siendo válido.
 
-
 ![Pantalla de inicio de sesión](images/login.png)
 
 ### 🏠 Menú principal
 
 Al iniciar sesión, el usuario llega a un menú tipo "launcher" dentro del propio dispositivo — íconos para Jugar, Mi Colección y Salir, en vez de una barra de navegación tradicional en el header. Toda la navegación de la aplicación vive dentro de la "pantalla" del dispositivo, no fuera de ella.
 
-![Menu principal](<images/panel_principal.png>)
+![Menu principal](images/panel_principal.png)
 
 ### 🎮 Juego y gamificación
 
@@ -41,9 +43,7 @@ Este es el corazón de la aplicación. El flujo completo:
 
 ![Selector de módulos](images/juego_1.png)
 
-
 ![Pregunta de trivia](images/juego_2.png)
-
 
 ![Carta revelada](images/juego_3.png)
 
